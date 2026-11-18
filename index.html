@@ -6,6 +6,36 @@
   <style>
     :root{--green:#087443;--dark:#123d2d;--soft:#f3f7f5;--line:#dce7e1;--muted:#698078}*{box-sizing:border-box}body{margin:0;background:var(--soft);color:var(--dark);font:14px Inter,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.appbar{background:linear-gradient(110deg,#075c35,#0b8b50);color:#fff;padding:16px 24px;display:flex;gap:16px;align-items:center;justify-content:space-between}.brand{font-size:20px;font-weight:800}.userbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.nav,.primary,.danger,.ghost{border:0;border-radius:8px;padding:9px 12px}.nav{background:#ffffff20;color:#fff}.primary{background:var(--green);color:#fff}.danger{background:#9d302f;color:#fff}.ghost{background:#edf4f0;color:var(--dark)}.page{max-width:1500px;margin:auto;padding:24px}.hero{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}.eyebrow{color:var(--green);font-size:12px;text-transform:uppercase;font-weight:800;letter-spacing:.08em}.hero h1{margin:4px 0;font-size:28px}.muted{color:var(--muted)}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 5px 18px #193e2b0b;margin-bottom:18px}.form-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px;font-weight:700;color:#315448}.field input,.field select,.field textarea,.search{border:1px solid #cbdad2;border-radius:8px;padding:10px;background:#fff;color:var(--dark);font-weight:400}.field textarea{min-height:76px;resize:vertical}.wide{grid-column:span 2}.form-foot{display:flex;align-items:end;gap:8px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.toolbar .search{min-width:180px}.toolbar select{padding:9px;border:1px solid #cbdad2;border-radius:8px}.table-wrap{overflow:auto;margin-top:14px}table{border-collapse:collapse;width:100%;min-width:1120px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#eef6f1;color:#285040;font-size:12px;white-space:nowrap}td{font-size:13px}.address{max-width:240px;white-space:normal}.actions{display:flex;gap:5px;flex-wrap:wrap}.actions button{padding:6px 8px;border:0;border-radius:6px;font-size:12px}.edit{background:#ffe4a8}.complete{background:#b9e8ca}.remove{background:#ffd0d0}.empty{text-align:center;color:var(--muted);padding:30px}.auth{min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at top right,#bce8ce,#f3f7f5 50%)}.auth-card{width:min(390px,calc(100% - 30px));background:#fff;padding:30px;border-radius:18px;box-shadow:0 18px 50px #123d2d20}.auth-card h1{margin-top:0}.auth-card input{display:block;width:100%;padding:11px;margin:10px 0;border:1px solid var(--line);border-radius:8px}.auth-card button{width:100%;margin-top:8px;padding:11px}.toast{position:fixed;right:20px;bottom:20px;background:#153e2d;color:#fff;padding:12px 16px;border-radius:8px;box-shadow:0 8px 24px #0003}.modal{position:fixed;inset:0;background:#062a1d88;display:grid;place-items:center;padding:16px}.modal-card{background:#fff;border-radius:14px;width:min(650px,100%);max-height:90vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head button{border:0;background:none;font-size:22px}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#f0f7f3;padding:10px 14px;border-radius:10px}.stat b{display:block;font-size:20px}@media(max-width:900px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wide{grid-column:span 2}.appbar{padding:14px}.page{padding:14px}.hero{display:block}.userbar{margin-top:12px}}@media(max-width:560px){.form-grid{grid-template-columns:1fr}.wide{grid-column:span 1}.appbar{display:block}}
   </style>
+  <style>
+    html,body{max-width:100%;overflow-x:hidden}
+    @media(max-width:560px){
+      body{font-size:14px}
+      .appbar{padding:12px;position:sticky;top:0;z-index:10}
+      .brand{font-size:18px;margin-bottom:10px}
+      .userbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;width:100%}
+      .userbar span{grid-column:1/-1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+      .userbar button{min-height:42px;padding:9px 8px;font-size:13px}
+      .page{padding:12px}
+      .hero{margin-bottom:12px}
+      .hero h1{font-size:22px;line-height:1.2}
+      .panel{padding:12px;border-radius:11px;margin-bottom:12px}
+      .panel h2{font-size:19px;margin-top:2px}
+      .form-grid{grid-template-columns:1fr;gap:10px}
+      .wide{grid-column:span 1}
+      .field input,.field select,.field textarea,.search,.toolbar select,.toolbar button{min-height:44px}
+      .field textarea{min-height:100px}
+      .form-foot,.toolbar{width:100%;align-items:stretch}
+      .form-foot button,.toolbar button{width:100%}
+      .toolbar .search{min-width:0;width:100%}
+      .table-wrap{margin-left:-4px;margin-right:-4px;padding:0 4px}
+      table{min-width:760px}
+      th,td{padding:9px 8px}
+      .address{max-width:180px}
+      .auth-card{width:calc(100% - 24px);padding:22px}
+      .auth-card input,.auth-card button{min-height:46px}
+      .modal-card{padding:14px}
+    }
+  </style>
 </head>
 <body>
   <section id="loginView" class="auth"><div class="auth-card"><div class="eyebrow">SEKAR FİLO</div><h1>Araç Teslim Sistemi</h1><p class="muted">Yeni ve temiz kayıt alanı</p><input id="email" type="email" placeholder="E-posta"><input id="password" type="password" placeholder="Şifre"><button class="primary" id="loginBtn">Giriş Yap</button><p id="loginError" class="muted"></p></div></section>
