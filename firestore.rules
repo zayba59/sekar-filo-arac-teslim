@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.email == 'admin@sekarfilo.com.tr';
+    }
+
+    function hasReadPermission() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/permissions_v2/$(request.auth.token.email))
+        && get(/databases/$(database)/documents/permissions_v2/$(request.auth.token.email)).data.read == true;
+    }
+
+    function hasWritePermission() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/permissions_v2/$(request.auth.token.email))
+        && get(/databases/$(database)/documents/permissions_v2/$(request.auth.token.email)).data.write == true;
+    }
+
+    match /permissions_v2/{email} {
+      allow read: if isAdmin() || (signedIn() && email == request.auth.token.email);
+      allow write: if isAdmin();
+    }
+
+    match /deliveries_v2/{id} {
+      allow read: if isAdmin() || hasReadPermission();
+      allow create, update, delete: if isAdmin() || hasWritePermission();
+    }
+
+    match /returns_v2/{id} {
+      allow read: if isAdmin() || hasReadPermission();
+      allow create, update, delete: if isAdmin() || hasWritePermission();
+    }
+
+    match /vehicles_v2/{id} {
+      allow read: if isAdmin() || hasReadPermission();
+      allow create, update, delete: if isAdmin() || hasWritePermission();
+    }
+  }
+}
+
